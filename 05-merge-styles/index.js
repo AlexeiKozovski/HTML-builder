@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const {readdir} = require('fs/promises');
+const { readdir } = require('fs/promises');
 const { stderr } = process;
 
 const stylePath = path.join(__dirname, 'styles');
@@ -14,8 +14,7 @@ async function mergeStyles(dirPath){
       const arr = [];
       const readStream = fs.createReadStream(filePath, 'utf-8');
       readStream.on('data', chunk => arr.push(chunk));
-      readStream.on('end', () => arr.forEach(elem => writeStream.write(elem + '\n')));
-      // readStream.on('error', (error) => stderr.write('Error', error.message));
+      readStream.on('end', () => arr.forEach(elem => writeStream.write(elem + '\n')));      
     }
   })
 }
